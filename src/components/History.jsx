@@ -22,7 +22,7 @@ function History() {
   const [excel, setExcel] = useState({});
   const apiCall = async () => {
     const response = await axios.post(
-      "http://3.110.47.142:5000/api/TransitionList",
+      "http://localhost:3000//api/TransitionList",
       date
     );
     const data2 = await response.data.data;
@@ -32,7 +32,7 @@ function History() {
   };
 
   const excelApiCall = async () => {
-    const response = await axios.post( "http://3.110.47.142:5000/api/excel", date, {
+    const response = await axios.post( "http://localhost:3000//api/excel", date, {
       responseType: "arraybuffer",
     });
     const data2 = await response.data;

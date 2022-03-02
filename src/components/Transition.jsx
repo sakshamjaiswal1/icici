@@ -39,7 +39,7 @@ export class Transition extends Component {
 
     axios
       .post(
-        "http://3.110.47.142:5000/api/create/pdf",
+        "http://localhost:3000/api/create/pdf",
         { PolicyNumber: this.props.fileInfo.PolicyNumber },
         { responseType: "arraybuffer" }
       )
@@ -60,7 +60,7 @@ export class Transition extends Component {
   history = (event) => {
     event.preventDefault();
     axios
-      .post("http://3.110.47.142:5000/api/TransitionList")
+      .post("http://localhost:3000//api/TransitionList")
       .then((response) => {
         console.log(response);
         this.setState({ historyData: response.data.data });

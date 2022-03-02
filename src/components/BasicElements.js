@@ -132,7 +132,7 @@ export class BasicElements extends Component {
 
       console.log(formData);
       axios
-        .post("http://3.110.47.142:5000/api/Verify/Transition", formData)
+        .post("http://localhost:3000/api/Verify/Transition", formData)
         .then((response) => {
           console.log(response);
           this.setState({ formInfo: response.data.data });
