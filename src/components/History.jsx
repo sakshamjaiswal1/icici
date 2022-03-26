@@ -17,12 +17,12 @@ function History() {
     first:false,
     second:false,
   });
-
+  console.log(REACT_APP_API_URL);
   // console.log(REACT_APP_API_URL)
   const [excel, setExcel] = useState({});
   const apiCall = async () => {
     const response = await axios.post(
-      "http://localhost:3000//api/TransitionList",
+      `${REACT_APP_API_URL}/api/TransitionList`,
       date
     );
     const data2 = await response.data.data;
@@ -32,7 +32,7 @@ function History() {
   };
 
   const excelApiCall = async () => {
-    const response = await axios.post( "http://localhost:3000//api/excel", date, {
+    const response = await axios.post( `${REACT_APP_API_URL}/api/excel`, date, {
       responseType: "arraybuffer",
     });
     const data2 = await response.data;
@@ -64,7 +64,7 @@ function History() {
 
     axios
       .post(
-        "http://3.110.47.142:5000/api/create/pdf",
+        `${REACT_APP_API_URL}/api/create/pdf`,
         { PolicyNumber: num },
         { responseType: "arraybuffer" }
       )

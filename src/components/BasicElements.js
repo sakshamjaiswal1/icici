@@ -4,7 +4,7 @@ import bsCustomFileInput from "bs-custom-file-input";
 import logo from "../assets/images/download.png";
 import axios from "axios";
 import Transition from "./Transition";
-
+const { REACT_APP_API_URL } = process.env;
 export class BasicElements extends Component {
   state = {
     PolicyNumber: "",
@@ -132,7 +132,7 @@ export class BasicElements extends Component {
 
       console.log(formData);
       axios
-        .post("http://localhost:3000/api/Verify/Transition", formData)
+        .post(`${REACT_APP_API_URL}/api/Verify/Transition`, formData)
         .then((response) => {
           console.log(response);
           this.setState({ formInfo: response.data.data });

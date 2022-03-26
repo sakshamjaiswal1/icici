@@ -27,11 +27,11 @@ export class Transition extends Component {
     productimage2: this.props.fileInfo.AdmittedSigneture2,
     productimage3: this.props.fileInfo.resp_img1,
     productimage4: this.props.fileInfo.resp_img2,
-    fileInfo:this.props.fileInfo,
+    fileInfo: this.props.fileInfo,
     history: false,
     trans: true,
     historyData: {},
-    resColor:''
+    resColor: "",
   };
 
   handleSubmit = (event) => {
@@ -39,7 +39,7 @@ export class Transition extends Component {
 
     axios
       .post(
-        "http://localhost:3000/api/create/pdf",
+        `${REACT_APP_API_URL}/api/create/pdf`,
         { PolicyNumber: this.props.fileInfo.PolicyNumber },
         { responseType: "arraybuffer" }
       )
@@ -52,15 +52,14 @@ export class Transition extends Component {
 
   componentDidMount() {
     bsCustomFileInput.init();
-    this.setState({fileInfo:this.props.fileInfo})
-    console.log(this.state.fileInfo)
-  
+    this.setState({ fileInfo: this.props.fileInfo });
+    console.log(this.state.fileInfo);
   }
 
   history = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:3000//api/TransitionList")
+      .post(`${REACT_APP_API_URL}/api/TransitionList`)
       .then((response) => {
         console.log(response);
         this.setState({ historyData: response.data.data });
@@ -84,6 +83,7 @@ export class Transition extends Component {
                     {/* <a className="nav-link text-success " href="">
                   Transaction{" "}
                 </a> */}
+
                     <Link to="/" className="  ">
                       Transaction
                     </Link>
@@ -105,7 +105,7 @@ export class Transition extends Component {
               <hr />
             </div>
             <div className=" mx-4 d-flex">
-              {this.props.fileInfo.error !='false'  ? (
+              {this.props.fileInfo.error != "false" ? (
                 <>
                   <h4 className="mt-4">Verification In Progress</h4>
                 </>
@@ -249,8 +249,18 @@ export class Transition extends Component {
                               className="form-control visibility-hidden mt-2"
                               id="customFileLang"
                               lang="es"
-                              style={{color:`${this.props.fileInfo.Matched=='true'?'green':'red'}`}}
-                              value={this.props.fileInfo.Matched=='true'?'Passed':'Failed'}
+                              style={{
+                                color: `${
+                                  this.props.fileInfo.Matched == "true"
+                                    ? "green"
+                                    : "red"
+                                }`,
+                              }}
+                              value={
+                                this.props.fileInfo.Matched == "true"
+                                  ? "Passed"
+                                  : "Failed"
+                              }
                               //   onChange={this.onFileChange1}
                             />
                           </div>
@@ -321,7 +331,6 @@ export class Transition extends Component {
                       alt=""
                     />
                   </div> */}
-
                   </div>
                   <div className="sign__con1 d-flex flex-column mx-4">
                     <div className="">
@@ -341,7 +350,6 @@ export class Transition extends Component {
                       alt=""
                     />
                     </div> */}
-
                   </div>
                 </>
               )}
